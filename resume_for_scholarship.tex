@@ -1,0 +1,230 @@
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt,UTF8]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+\usepackage{fontspec}
+\usepackage{ctex} % for Chinese characters
+\usepackage{setspace}  % space hight
+\usepackage{fancyhdr} % footer
+
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}    
+    }
+
+
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+% \pagestyle{empty}
+\pagestyle{fancy} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Kane Hu} \\[6.5pt]
+\href{https://github.com/OpensourceHU}{\raisebox{-0.05\height}\faGithub\ OpensourceHU} \ $|$ \ 
+%\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
+%href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
+\href{mailto:opensourcehu0228@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ opensourcehu0228@gmail.com} \ $|$ \ 
+\href{tel:+8618981833862}{\raisebox{-0.05\height}\faMobile \ +86 189-8183-3862} \\
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}}	
+2019 - 2023 & ​​Bachelor of Engineering​​ at \textbf{Sichuan Agriculture University} \hfill (GPA: 3.74/4.00) \\ 
+\end{tabularx}
+\textbf{Major:} Internet of Things (IoT)\\
+\textbf{Relevant Coursework:} Algorithms, Data Structures, Discrete Mathematics, Embeded System, 
+Operation System,Computer Networks, Software Engineering\\
+\textbf{Competitions and Awards:}
+\begin{itemize} [nosep]
+    \setstretch{1.2}
+    \item \textbf{Bronze Medal} of  \textbf{​ACM-ICPC\textsuperscript{1} 2021​} Sichuan Provincial Contest
+    \item \textbf{Honorable Prize} of \textbf{ACM-ICPC 2021 Asia Regional Contest} Shanghai \& Nanjing site
+    \item \textbf{Second Prize} of \textbf{Lanqiao Cup 2021} Sichuan Provincial Competition
+    \item \textbf{Honorable Prize} of \textbf{CUMCM\textsuperscript{2}}
+    \item \textbf{National Second Prize \& Sichuan First Prize} of \textbf{GPLT\textsuperscript{3}}
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+% \section{Summary}
+% This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+
+%Experience
+\section{Work Experience}
+
+\begin{jobshort}{SDE in Trip.com Group (Shanghai,China)}{Jul 2023 - Jun 2025}
+Served as a Backend Development Engineer in the International Business Unit at Trip.com Group, responsible for the development and maintenance of the Digital Marketing system.
+\begin{itemize} [nosep]
+    \setstretch{1.2}
+    \item ​​Enhanced the user experience of app invocation, download attribution, and short-link systems.​​
+    ​​Designed and implemented an ETL pipeline and disaster recovery system for attribution data from advertising partners.​​
+    \item Maintain and optimized a programmatic ​​Ad Creative Material system, automating the batch creation of images and videos to optimize ad feed workflows.
+    \item Played a key role in the design and development of the Trips marketing platform, subsequently leading the rollout of the overseas Key Opinion Leader
+    activity management module to amplify international marketing efficiency.  
+\end{itemize}
+\end{jobshort}
+
+
+\begin{jobshort}{SDE intern in Kuaishou Technology (Beijing,China)}{Aug 2022 - Dec 2022}
+    Participated in iterative sprint development of business-side management system requirements for Kuaishou Ideal Home (Kuaishou’s real estate platform​​). 
+\end{jobshort}
+  
+%Projects
+% \section{Projects}
+
+% \begin{tabularx}{\linewidth}{ @{}l r@{} }
+% \textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
+% \multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+% \end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+% \section{Publications}
+% \begin{refsection}[citations.bib]
+% \nocite{*}
+% \printbibliography[heading=none]
+% \end{refsection}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+    Program languages & Java(Advance), Python, MATLAB, Golang, C\&C++(Basic)\\
+    Data Processing &  Pandas, Matplotlib, Jupyter Notebook etc.\\
+    Developmen Frameworks & Mysql, SpringBoot, MongoDB, ElasticSearch etc.\\
+    Tools &  Git, \LaTeX, IntelliJ IDEA, VS Code, Office\\
+    Languages  &  \normalsize{CET-6 : 460, IELTS : 6.5}\\  
+\end{tabularx}
+
+\vfill
+% \center{\footnotesize Last updated: \today}
+
+% Clearing default headers and footers
+\fancyhf{}
+% remove header
+\renewcommand{\headrulewidth}{0pt}
+
+\setlength{\footskip}{20pt} 
+% Setting the footer content with full names in italics
+\fancyfoot{}
+\fancyfoot[L]{
+    \small
+    \setstretch{0.8}
+    \textit{
+        \textsuperscript{1}ACM-ICPC: ACM - International Collegiate Programming Contest\\
+        \textsuperscript{2}CUMCM: China Undergraduate Mathematical Contest in Modeling\\
+        \textsuperscript{3}GPLT: Group Programming Ladder Tournament}
+    }
+\end{document}
